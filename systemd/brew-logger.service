@@ -1,0 +1,19 @@
+[Unit]
+Description=Brew logger
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/local/brew-logger
+User=www-data
+Group=www-data
+ExecStart=/usr/bin/python /usr/local/bin/brew-logger.py
+Environment="MQTT_USER=mqtt"
+Environment="MQTT_PASS=password"
+Environment="MQTT_HOST=localhost"
+Environment="MQTT_PORT=8883"
+Environment="DB_FILE=brew-logger.sqlite"
+
+[Install]
+WantedBy=multi-user.target
+
